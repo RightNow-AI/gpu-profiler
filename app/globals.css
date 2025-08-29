@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "@fontsource/jetbrains-mono";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --border: #e5e5e5;
+  --border-input: #d4d4d8;
+  --ring: #18181b;
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --border: #262626;
+    --border-input: #3f3f46;
+    --ring: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sharp UI Components */
+.rn-input {
+  @apply w-full px-3 py-2 text-sm border 
+         text-neutral-800 dark:text-white placeholder:text-neutral-500 
+         focus:outline-none focus:ring-1 focus:border-transparent
+         transition-colors duration-100;
+  background: var(--background);
+  border-color: var(--border-input);
+  border-radius: 2px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.rn-input:focus {
+  --tw-ring-color: var(--ring);
+}
+
+.rn-button {
+  @apply w-full px-4 py-2 text-sm font-medium text-white bg-neutral-800 dark:bg-white dark:text-neutral-800
+         hover:bg-neutral-700 dark:hover:bg-neutral-100 
+         focus:outline-none 
+         transition-colors duration-100 disabled:opacity-50 disabled:cursor-not-allowed;
+  border-radius: 2px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.rn-chip {
+  @apply px-3 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-400 
+         bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700
+         hover:bg-neutral-200 dark:hover:bg-neutral-700 
+         focus:outline-none
+         transition-colors duration-100 cursor-pointer select-none;
+  border-radius: 2px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.rn-chip.active {
+  @apply bg-neutral-800 dark:bg-white text-white dark:text-neutral-800 
+         border-neutral-800 dark:border-white;
+}
+
+.font-jetbrains {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* Professional scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #262626;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #525252;
+  }
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Upload area styles */
+.upload-area {
+  @apply border-2 border-dashed border-neutral-200 dark:border-neutral-700
+         p-8 hover:border-neutral-400 dark:hover:border-neutral-500
+         transition-colors duration-100 cursor-pointer;
+  border-radius: 2px;
+}
+
+.upload-area.dragover {
+  @apply border-neutral-800 dark:border-white bg-neutral-50 dark:bg-neutral-900;
+}
+
+/* Loading animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
